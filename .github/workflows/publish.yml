@@ -1,5 +1,5 @@
 ---
-name: Publish to Docker Hub
+name: Publish Docker Image
 on:
   push:
     branches:
