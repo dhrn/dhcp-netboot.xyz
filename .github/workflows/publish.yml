@@ -19,12 +19,15 @@ jobs:
         id: current-time
         with:
           format: YYYY-MM-DDTHHmmSS
-
-      - name: Build and push image
-        uses: docker/build-push-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
         with:
           username: dhrn
           password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v2
+        with:
           repository: dhrn/dhcp-netboot.xyz
           tags: latest, ${{ steps.current-time.outputs.formattedTime }}
 
