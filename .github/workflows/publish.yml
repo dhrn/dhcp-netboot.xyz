@@ -3,10 +3,10 @@ name: Publish to Docker Hub
 on:
   push:
     branches:
-      - master
-  # Publish master every Thursday at 7AM (schedule only applies to the master branch)
-  schedule:
-    - cron: "0 7 * * 4"
+      - main
+#   # Publish master every Thursday at 7AM (schedule only applies to the master branch)
+#   schedule:
+#     - cron: "0 12 * * 2"
 
 jobs:
   publish:
@@ -23,14 +23,14 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v1
         with:
-          username: samdbmg
+          username: dhrn
           password: ${{ secrets.DOCKER_TOKEN }}
-          repository: samdbmg/dhcp-netboot.xyz
+          repository: dhrn/dhcp-netboot.xyz
           tags: latest, ${{ steps.current-time.outputs.formattedTime }}
 
       - name: Update Docker Hub Description
         uses: peter-evans/dockerhub-description@v2.1.0
         env:
-          DOCKERHUB_USERNAME: samdbmg
+          DOCKERHUB_USERNAME: dhrn
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
-          DOCKERHUB_REPOSITORY: samdbmg/dhcp-netboot.xyz
+          DOCKERHUB_REPOSITORY: dhrn/dhcp-netboot.xyz
