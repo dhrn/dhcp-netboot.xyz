@@ -9,6 +9,6 @@ COPY etc /etc/
 # Set the start of the IP range to reply to PXE DHCP requests on
 ENV DHCP_RANGE_START=192.168.0.1
 
-RUN echo nameserver 8.8.8.8 | sudo tee /etc/resolv.conf
+RUN echo nameserver 8.8.8.8 | tee /etc/resolv.conf
 
 # dnsmasq will be started as a system service by the s6 supervisor
