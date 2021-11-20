@@ -2,8 +2,8 @@
 name: Publish Docker Image
 on:
   push:
-    branches:
-      - main
+#     branches:
+#       - main
 #   # Publish master every Thursday at 7AM (schedule only applies to the master branch)
 #   schedule:
 #     - cron: "0 12 * * 2"
